@@ -22,17 +22,26 @@ public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull(message = "O atributo descrição é obrigatório!")
 	@Size(min = 3, max = 50, message = "O atributo descrição deve ter pelo menos 3 caracteres e no máximo 50!")
 	private String nome;
-	
+
 	@NotNull(message = "O atributo descrição é obrigatório!")
 	private String descricao;
-	
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("categoria")
 	private List<Produto> produto;
+
+	public Categoria(Long id, String nome, String descricao) {
+		this.id = id;
+		this.nome = nome;
+		this.descricao = descricao;
+	}
+
+	public Categoria() {
+	}
 
 	public Long getId() {
 		return id;
@@ -65,5 +74,5 @@ public class Categoria {
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
-	
+
 }

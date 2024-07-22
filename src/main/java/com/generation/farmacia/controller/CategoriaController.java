@@ -30,37 +30,35 @@ public class CategoriaController {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Categoria>> getAll() {
 		return ResponseEntity.ok(categoriaRepository.findAll());
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<Categoria> getById(@PathVariable Long id) {
-		return categoriaRepository.findById(id)
-				.map(resposta -> ResponseEntity.ok(resposta))
+		return categoriaRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
-	
+
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<Categoria>> getByNome(@PathVariable String nome) {
 		return ResponseEntity.ok(categoriaRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<Categoria> post(@Valid @RequestBody Categoria categoria) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaRepository.save(categoria));
 	}
-	
+
 	@PutMapping
 	public ResponseEntity<Categoria> put(@Valid @RequestBody Categoria categoria) {
 		return categoriaRepository.findById(categoria.getId())
-				.map(resposta -> ResponseEntity.status(HttpStatus.OK)
-						.body(categoriaRepository.save(categoria)))
+				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(categoriaRepository.save(categoria)))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
@@ -70,5 +68,5 @@ public class CategoriaController {
 		}
 		categoriaRepository.deleteById(id);
 	}
-	
+
 }

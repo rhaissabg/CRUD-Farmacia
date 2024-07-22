@@ -31,27 +31,26 @@ public class ProdutoController {
 
 	@Autowired
 	private ProdutoRepository produtoRepository;
-	
+
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Produto>> getAll() {
 		return ResponseEntity.ok(produtoRepository.findAll());
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<Produto> getById(@PathVariable Long id) {
-		return produtoRepository.findById(id)
-				.map(resposta -> ResponseEntity.ok(resposta))
+		return produtoRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
-	
+
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<Produto>> getByNome(@PathVariable String nome) {
 		return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<Produto> post(@Valid @RequestBody Produto produto) {
 		if (categoriaRepository.existsById(produto.getCategoria().getId())) {
@@ -59,7 +58,7 @@ public class ProdutoController {
 		}
 		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Categoria não existe!", null);
 	}
-	
+
 	@PutMapping
 	public ResponseEntity<Produto> put(@Valid @RequestBody Produto produto) {
 		if (produtoRepository.existsById(produto.getId())) {
@@ -70,7 +69,7 @@ public class ProdutoController {
 		}
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
@@ -80,5 +79,5 @@ public class ProdutoController {
 		}
 		produtoRepository.deleteById(id);
 	}
-	
+
 }

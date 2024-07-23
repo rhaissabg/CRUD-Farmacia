@@ -25,13 +25,13 @@ public class Produto {
 
 	@NotNull(message = "O atributo preço é obrigatório!")
 	private Double preco;
-	
+
 	@NotNull(message = "O atributo quantidade é obrigatório!")
 	private Long quantidade;
 
 	@NotNull(message = "O atributo fabricante é obrigatório!")
 	private String fabricante;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
@@ -83,5 +83,5 @@ public class Produto {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
+
 }

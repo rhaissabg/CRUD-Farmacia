@@ -23,6 +23,20 @@ O principal objetivo do projeto é fornecer uma solução eficiente para o geren
 * Spring Data JPA: Utilizado para a comunicação com o banco de dados, simplificando a persistência de dados e o gerenciamento das entidades.
 * H2 Database: Uma base de dados em memória foi utilizada para desenvolvimento e testes, permitindo um ambiente de teste rápido e leve.
 * JUnit: Para garantir a qualidade do código, foram implementados testes unitários utilizando JUnit. Esses testes cobrem as funcionalidades de CRUD, garantindo que todas as operações funcionem conforme o esperado.
-  
+
+## Como levantar o aplicativo
+
+Para levantar o aplicativo, use este comando:
+```shell
+docker compose up -d
+```
+
+## Swagger
+
+Swagger url: http://localhost:8080/swagger-ui/index.html
+
+Api docs url: http://localhost:8080/v3/api-docs
+
+
 ## Conclusão
 O sistema de farmácia desenvolvido é uma ferramenta poderosa para o gerenciamento eficiente de medicamentos e categorias. Com o uso de Spring Boot e outras tecnologias modernas, o projeto oferece uma solução completa e escalável para atender às necessidades de qualquer farmácia. Estou satisfeita com o resultado e confiante de que este sistema pode ser facilmente expandido para incluir funcionalidades adicionais no futuro.

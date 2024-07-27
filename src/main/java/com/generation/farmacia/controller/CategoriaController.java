@@ -21,9 +21,11 @@ import org.springframework.web.server.ResponseStatusException;
 import com.generation.farmacia.model.Categoria;
 import com.generation.farmacia.repository.CategoriaRepository;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
+@Tag(name="Categorias")
 @RequestMapping("/categorias")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategoriaController {

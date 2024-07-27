@@ -31,6 +31,12 @@ Para levantar o aplicativo, use este comando:
 docker compose up -d
 ```
 
-  
+## Swagger
+
+Swagger url: http://localhost:8080/swagger-ui/index.html
+
+Api docs url: http://localhost:8080/v3/api-docs
+
+
 ## Conclusão
 O sistema de farmácia desenvolvido é uma ferramenta poderosa para o gerenciamento eficiente de medicamentos e categorias. Com o uso de Spring Boot e outras tecnologias modernas, o projeto oferece uma solução completa e escalável para atender às necessidades de qualquer farmácia. Estou satisfeita com o resultado e confiante de que este sistema pode ser facilmente expandido para incluir funcionalidades adicionais no futuro.
